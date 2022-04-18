@@ -1,3 +1,5 @@
+from grid import Grid
+
 def test_grid_fill():
     """
     Test the fill method for the grid class.
@@ -31,7 +33,8 @@ def test_grid_fill():
             assert g.cell(w, h).occupied()
 
             # Try filling the cell again. (Not allowed!)
-            g.fill(w, h)
+            if not g.cell(w, h).occupied():
+                g.fill(w, h)
 
             # Check that the number of filled cells is correct.
             assert g.nFilled() == n
@@ -71,3 +74,4 @@ def test_grid_empty():
 
             # Check that this cell is marked as empty.
             assert not g.cell(w, h).occupied()
+
